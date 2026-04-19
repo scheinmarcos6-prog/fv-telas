@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FV Telas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#0b1d2a;color:#fff}
+
+/* HEADER */
+header{
+background:#07131c;
+padding:20px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+nav a{
+color:#fff;
+margin-left:20px;
+text-decoration:none;
+}
+
+/* HERO */
+.hero{
+padding:60px 20px;
+text-align:center;
+background:linear-gradient(135deg,#0b1d2a,#12344d);
+}
+
+.hero p{max-width:700px;margin:auto;color:#cfd8dc}
+
+/* SERVIÇOS */
+.services{padding:60px 20px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:#112b3c;padding:25px;border-radius:15px}
+
+/* PORTFÓLIO */
+.portfolio{padding:60px 20px;text-align:center}
+.carrossel-container{max-width:800px;margin:auto;overflow:hidden;position:relative}
+.carrossel{display:flex;transition:0.5s}
+.item{min-width:100%}
+.item img{width:100%;border-radius:15px}
+
+.carrossel-btn{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.5);
+border:none;
+color:#fff;
+padding:10px;
+cursor:pointer;
+border-radius:50%;
+}
+.prev{left:10px}
+.next{right:10px}
+
+/* CONTATO */
+.contato{
+padding:60px 20px;
+text-align:center;
+background:#07131c;
+}
+
+.btn{
+background:#25d366;
+padding:15px 30px;
+border-radius:30px;
+text-decoration:none;
+color:#fff;
+font-weight:600;
+display:inline-block;
+margin-top:20px;
+}
+
+/* BOTÃO WHATS CENTRAL */
+.whatsapp-centro{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#25d366;
+padding:15px 25px;
+border-radius:50px;
+color:#fff;
+text-decoration:none;
+font-weight:bold;
+z-index:999;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="fv_telas-removebg-preview.png" width="120">
+<nav>
+<a href="#">Início</a>
+<a href="#servicos">Serviços</a>
+<a href="#contato">Contato</a>
+</nav>
+</header>
+
+<section class="hero">
+<h2>FV Telas</h2>
+<p> Somos especialistas em redes de proteção e telas mosqueteira, oferecemos mais do que uma simples instalação, nosso objetivo é sempre oferecer segurança, tranquilidade e bem-estar para nossos clientes. Atendemos espaços residências e comerciais. Atuando com materiais de alta qualidade e mão de obra qualificada, prevenindo acidentes com crianças, animais de estimação. Nossos serviços são realizados de forma personalizada, respeitando as necessidades de cada cliente e mantendo a harmonia do ambiente.</p>
+</section>
+
+<section class="services" id="servicos">
+<h2>Serviços</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Redes de Proteção</h3>
+<p>Instalação de redes resistentes e discretas para mezaninos, janelas, sacadas e escadas, garantindo segurança para crianças, pets e toda a família. Utilizamos materiais de alta durabilidade com excelente acabamento.</p>
+</div>
+
+<div class="card">
+<h3>Telas Mosquiteiras</h3>
+<p>Soluções eficientes contra insetos, permitindo ventilação natural sem abrir mão da proteção. Trabalhamos com telas sob medida, com acabamento moderno e instalação prática.</p>
+</div>
+
+<div class="card">
+<h3>Manutenção</h3>
+<p>Serviço completo de manutenção e troca de redes, telas e ganchos, incluindo ajustes, reforços e substituições para garantir sempre a máxima segurança e funcionalidade.</p>
+</div>
+
+</div>
+</section>
+
+<section class="portfolio">
+<h2>Nosso Trabalho</h2>
+
+<div class="carrossel-container">
+
+<button class="carrossel-btn prev" onclick="mover(-1)">❮</button>
+
+<div class="carrossel" id="carrossel">
+<div class="item"><img src="img1.jpg"></div>
+<div class="item"><img src="img2.jpg"></div>
+<div class="item"><img src="img3.jpg"></div>
+<div class="item"><img src="img4.jpg"></div>
+<div class="item"><img src="img5.jpg"></div>
+<div class="item"><img src="img6.jpg"></div>
+<div class="item"><img src="img7.jpg"></div>
+<div class="item"><img src="img8.jpg"></div>
+<div class="item"><img src="img9.jpg"></div>
+<div class="item"><img src="img10.jpg"></div>
+<div class="item"><img src="img11.jpg"></div>
+</div>
+
+<button class="carrossel-btn next" onclick="mover(1)">❯</button>
+
+</div>
+</section>
+
+<section class="contato" id="contato">
+<h2>Solicite seu orçamento</h2>
+<p>Entre em contato agora mesmo fale com um de nossos atendentes e garanta proteção e conforto para sua casa.</p>
+<a href="https://wa.me/554799535168" class="btn">Falar no WhatsApp</a>
+</section>
+
+<script>
+let index = 0;
+
+function mover(direcao){
+const carrossel = document.getElementById("carrossel");
+const total = document.querySelectorAll(".item").length;
+
+index += direcao;
+
+if(index < 0) index = total - 1;
+if(index >= total) index = 0;
+
+carrossel.style.transform = `translateX(-${index * 100}%)`;
+}
+
+// AUTO SLIDE
+setInterval(() => {
+mover(1);
+}, 4000);
+</script>
+
+</body>
+</html>
